@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shree Ram Hotel & Curry Point — Authentic South Indian Tiffins, Meals, Biryanis and Curry Point in Ameenpur, Miyapur, Hyderabad. Party orders and catering available.">
+    <title>Shree Ram Hotel & Curry Point | Ameenpur, Hyderabad</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/curry-extras.css">
+</head>
+
+<body>
+
+    <!-- ===================== NAVIGATION BAR ===================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-symbol">✿</span>
+                <div class="logo-text">
+                    <span class="logo-main">Shree Ram Hotel</span>
+                    <span class="logo-tagline">& Curry Point · Ameenpur</span>
+                </div>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#special">Today's Special</a></li>
+                <li><a href="#curry">Curry Point</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===================== HERO SECTION ===================== -->
+    <!--
+      LEARNING NOTE — The hero background:
+      We set background-image in CSS to 'images/hero-bg.jpg'.
+      That photo (header.jpeg you gave us) is now at:
+        src/main/resources/static/images/hero-bg.jpg
+      Spring Boot serves it at: http://localhost:8080/images/hero-bg.jpg
+      The CSS url('../images/hero-bg.jpg') path is relative to the CSS file
+      location (/css/style.css), so '../' goes up one folder to /static/.
+    -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-welcome">Welcome to</p>
+            <h1 class="hero-title">Shree Ram Hotel</h1>
+            <p class="hero-subtitle">& Curry Point</p>
+            <p class="hero-description">
+                Tiffins · Meals · Fastfood · Biryanis · Curries — served fresh every day
+                in Ameenpur, Miyapur. A/C &amp; Non A/C dining available.
+                Party orders &amp; catering accepted.
+            </p>
+            <div class="hero-buttons">
+                <!--
+                  wa.me URL format: https://wa.me/<country_code><number>?text=<url_encoded_message>
+                  9652750853 is the number from the banner.
+                  %20 = space in URL encoding. %0A = newline.
+                -->
+                <a href="https://wa.me/919652750853?text=Hello%20Shree%20Ram%20Hotel!%20I%20would%20like%20to%20place%20an%20order."
+                   class="btn btn-primary" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Order via WhatsApp
+                </a>
+                <a href="tel:+919652750853" class="btn btn-secondary">
+                    <i class="fas fa-phone-alt"></i> Call Us Now
+                </a>
+            </div>
+            <!-- Services strip -->
+            <div class="hero-services">
+                <span><i class="fas fa-check-circle"></i> Tiffins</span>
+                <span><i class="fas fa-check-circle"></i> Meals</span>
+                <span><i class="fas fa-check-circle"></i> Biryanis</span>
+                <span><i class="fas fa-check-circle"></i> Curry Point</span>
+                <span><i class="fas fa-check-circle"></i> Catering</span>
+            </div>
+        </div>
+        <a href="#special" class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- ===================== TODAY'S SPECIAL ===================== -->
+    <section class="special-section" id="special">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Fresh Today</span>
+                <h2 class="section-title">Today's Special</h2>
+                <p class="section-desc">Hand-picked by our chef every morning from the freshest ingredients</p>
+            </div>
+
+            <div class="specials-grid">
+
+                <div class="special-card featured">
+                    <div class="special-badge">⭐ Chef's Pick</div>
+                    <div class="special-img-wrap">
+                        <img src="images/curry-point.jpg" alt="Curry Point Special"
+                             class="special-img"
+                             onerror="this.src='https://placehold.co/400x300/8B4513/FFF5E6?text=Curry+Point+Special'">
+                    </div>
+                    <div class="special-info">
+                        <div class="veg-indicator non-veg">
+                            <span class="dot"></span> Non-Veg
+                        </div>
+                        <h3>Curry Point Special</h3>
+                        <p>Rich, slow-cooked curries from our famous Curry Point counter — Mutton Kheema, Chicken Fry and more. Available fresh every day until sold out!</p>
+                        <div class="special-footer">
+                            <span class="price">Ask Us!</span>
+                            <a href="https://wa.me/919652750853?text=Hi!%20What%20are%20today's%20Curry%20Point%20specials%3F"
+                               class="btn-order" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Ask Today's Curries
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="special-card">
+                    <div class="special-img-wrap">
+                        <img src="images/placeholder-dish.jpg" alt="Chicken Biryani"
+                             class="special-img"
+                             onerror="this.src='https://placehold.co/400x300/8B4513/FFF5E6?text=Chicken+Biryani'">
+                    </div>
+                    <div class="special-info">
+                        <div class="veg-indicator non-veg">
+                            <span class="dot"></span> Non-Veg
+                        </div>
+                        <h3>Chicken Biryani</h3>
+                        <p>Slow-cooked aromatic biryani with tender chicken, basmati rice, caramelised onions and whole spices. A Shree Ram Hotel signature.</p>
+                        <div class="special-footer">
+                            <span class="price">₹180</span>
+                            <a href="https://wa.me/919652750853?text=Hi!%20I%20would%20like%20to%20order%20Chicken%20Biryani."
+                               class="btn-order" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Order Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="special-card">
+                    <div class="special-img-wrap">
+                        <img src="images/placeholder-dish.jpg" alt="Ghee Pongal"
+                             class="special-img"
+                             onerror="this.src='https://placehold.co/400x300/8B4513/FFF5E6?text=Ghee+Pongal'">
+                    </div>
+                    <div class="special-info">
+                        <div class="veg-indicator veg">
+                            <span class="dot"></span> Veg
+                        </div>
+                        <h3>Ghee Pongal</h3>
+                        <p>Classic Telugu breakfast — rice and moong dal simmered with generous ghee, pepper and cumin. Served with sambar and chutney.</p>
+                        <div class="special-footer">
+                            <span class="price">₹60</span>
+                            <a href="https://wa.me/919652750853?text=Hi!%20I%20would%20like%20to%20order%20Ghee%20Pongal."
+                               class="btn-order" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Order Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CURRY POINT SECTION ===================== -->
+    <section class="curry-section" id="curry">
+        <div class="container">
+            <div class="curry-grid">
+                <div class="curry-image-wrap">
+                    <!-- HTML5 Video with autoplay muted loop and poster fallback -->
+                    <video class="curry-video" poster="images/curry-point.jpg" autoplay muted loop playsinline controls>
+                        <source src="images/Curries.mp4" type="video/mp4">
+                        <img src="images/curry-point.jpg" alt="Shree Ram Hotel Curry Point">
+                    </video>
+                    <div class="curry-badge">
+                        <i class="fas fa-video"></i> Live from Curry Counter
+                    </div>
+                </div>
+                <div class="curry-content">
+                    <span class="section-label" style="color: var(--color-gold)">Our Speciality</span>
+                    <h2 class="section-title" style="color: white; text-align: left;">The Famous<br>Curry Point</h2>
+                    <p class="curry-desc">
+                        Walk up to our legendary Curry Point counter and choose from a rotating
+                        selection of freshly cooked curries — Mutton Kheema, Chicken Masala,
+                        Egg Curry, dry fries and seasonal specials — all made in our traditional
+                        style with hand-ground masalas.
+                    </p>
+                    <p class="curry-desc">
+                        Available for <strong>dine-in</strong>, <strong>takeaway</strong>, and
+                        <strong>bulk orders for parties and events</strong>. Call ahead to reserve
+                        your batch!
+                    </p>
+                    <div class="curry-highlights">
+                        <div class="curry-highlight-item">
+                            <i class="fas fa-mortar-pestle"></i>
+                            <span>Hand-ground masalas daily</span>
+                        </div>
+                        <div class="curry-highlight-item">
+                            <i class="fas fa-fire-alt"></i>
+                            <span>Slow-cooked for deep flavour</span>
+                        </div>
+                        <div class="curry-highlight-item">
+                            <i class="fas fa-box-open"></i>
+                            <span>Bulk & party orders taken</span>
+                        </div>
+                        <div class="curry-highlight-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Fresh batches daily until sold out</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/919652750853?text=Hi!%20I%20would%20like%20to%20enquire%20about%20the%20Curry%20Point%20menu%20and%20bulk%20orders."
+                       class="btn btn-primary" target="_blank" style="margin-top: 1.5rem; display: inline-flex;">
+                        <i class="fab fa-whatsapp"></i> Enquire About Curry Point
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== MENU SECTION ===================== -->
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Our Menu</span>
+                <h2 class="section-title">What We Serve</h2>
+                <p class="section-desc">Fresh every day — Tiffins, Meals, Fastfood, Biryanis &amp; Curry Point</p>
+            </div>
+
+            <div class="menu-tabs">
+                <button class="tab-btn active" data-category="all">All</button>
+                <button class="tab-btn" data-category="breakfast">Tiffins</button>
+                <button class="tab-btn" data-category="meals">Meals</button>
+                <button class="tab-btn" data-category="biryani">Biryani</button>
+                <button class="tab-btn" data-category="curry">Curry Point</button>
+                <button class="tab-btn" data-category="snacks">Fastfood</button>
+                <button class="tab-btn" data-category="drinks">Drinks</button>
+            </div>
+
+            <div class="menu-grid" id="menuGrid">
+
+                <!-- Tiffins / Breakfast -->
+                <div class="menu-item" data-category="breakfast">
+                    <div class="menu-item-header">
+                        <div class="veg-dot veg"></div>
+                        <h4>Idli (2 pcs)</h4>
+                        <span class="item-price">₹30</span>
+                    </div>
+                    <p>Soft steamed rice cakes served with sambar and coconut chutney</p>
+                </div>
+
+                <div class="menu-item" data-category="breakfast">
+                    <div class="menu-item-header">
+                        <div class="veg-dot veg"></div>
+                        <h4>Plain Dosa</h4>
+                        <span class="item-price">₹40</span>
+                    </div>
+                    <p>Thin, crispy fermented rice crepe served with chutney and sambar</p>
+                </div>
+
+                <div class="menu-item" data-category="breakfast">
+                    <div class="menu-item-header">
+                        <div class="veg-dot veg"></div>
+                        <h4>Masala Dosa</h4>
+                        <span class="item-price">₹60</span>
+                    </div>
+                    <p>Crispy dosa stuffed with spiced potato filling. The South Indian classic!</p>
+                </div>
+
+                <div class="menu-item" data-category="breakfast">
+                    <div class="menu-item-header">
+                        <div class="veg-dot veg"></div>
+                        <h4>Vada (2 pcs)</h4>
+                        <span class="item-price">₹35</span>
+                    </div>
+                    <p>Crunchy lentil doughnuts with curry leaves and green chilli.</p>
+                </div>
+
+                <div class="menu-item" data-category="breakfast">
+                    <div class="menu-item-header">
+                        <div class="veg-dot veg"></div>
+                        <h4>Pongal</h4>
+                        <span class="item-price">₹55</span>
+                    </div>
+                    <p>Comforting rice-lentil dish with ghee, pepper and cumin.</p>
+                </div>
+
+                <div class="menu-item" data-category="breakfast">
+                    <div class="menu-item-header">
+                        <div class="veg-dot veg"></div>
+                        <h4>Upma</h4>
+                        <span class="item-price">₹40</span>
+                    </div>
+                    <p>Semolina cooked with vegetables, mustard seeds and curry leaves.</p>
+                </div>
+
+                <!-- Meals -->
+                <div class="menu-item" data-category="meals">
+                    <div class="menu-item-header">
+                        <div class="veg-dot veg"></div>
+                        <h4>Veg Meals</h4>
+                        <span class="item-price">₹100</span>
+                    </div>
+                    <p>Full South Indian thali: rice, sambar, rasam, curries, curd, papad and pickle</p>
+                </div>
+
+                <div class="menu-item" data-category="meals">
+                    <div class="menu-item-header">
+                        <div class="veg-dot non-veg"></div>
+                        <h4>Non-Veg Meals</h4>
+                        <span class="item-price">₹150</span>
+                    </div>
+                    <p>Full thali with rice, chicken curry, egg curry, rasam, curd, papad and pickle</p>
+                </div>
+
+                <div class="menu-item" data-category="meals">
+                    <div class="menu-item-header">
+                        <div class="veg-dot veg"></div>
+                        <h4>Curd Rice</h4>
+                        <span class="item-price">₹60</span>
+                    </div>
+                    <p>Cooling seasoned curd rice with mustard seeds and curry leaves.</p>
+                </div>
+
+                <!-- Biryani -->
+                <div class="menu-item" data-category="biryani">
+                    <div class="menu-item-header">
+                        <div class="veg-dot non-veg"></div>
+                        <h4>Chicken Biryani</h4>
+                        <span class="item-price">₹180</span>
+                    </div>
+                    <p>Slow-cooked Hyderabadi biryani with tender chicken and basmati rice.</p>
+                </div>
+
+                <div class="menu-item" data-category="biryani">
+                    <div class="menu-item-header">
+                        <div class="veg-dot non-veg"></div>
+                        <h4>Mutton Biryani</h4>
+                        <span class="item-price">₹220</span>
+                    </div>
+                    <p>Rich mutton pieces slow-cooked with whole spices and saffron-infused basmati.</p>
+                </div>
+
+                <div class="menu-item" data-category="biryani">
+                    <div class="menu-item-header">
+                        <div class="veg-dot non-veg"></div>
+                        <h4>Egg Biryani</h4>
+                        <span class="item-price">₹120</span>
+                    </div>
+                    <p>Flavourful biryani with boiled eggs, fried onions and aromatic spices.</p>
+                </div>
+
+                <div class="menu-item" data-category="biryani">
+                    <div class="menu-item-header">
+                        <div class="veg-dot veg"></div>
+                        <h4>Veg Biryani</h4>
+                        <span class="item-price">₹130</span>
+                    </div>
+                    <p>Colourful medley of vegetables with basmati rice and whole spices.</p>
+                </div>
+
+                <!-- Curry Point items -->
+                <div class="menu-item" data-category="curry">
+                    <div class="menu-item-header">
+                        <div class="veg-dot non-veg"></div>
+                        <h4>Mutton Kheema</h4>
+                        <span class="item-price">Market Price</span>
+                    </div>
+                    <p>Rich minced mutton cooked with onions, tomatoes and freshly ground masala. Our signature!</p>
+                </div>
+
+                <div class="menu-item" data-category="curry">
+                    <div class="menu-item-header">
+                        <div class="veg-dot non-veg"></div>
+                        <h4>Chicken Masala Curry</h4>
+                        <span class="item-price">Market Price</span>
+                    </div>
+                    <p>Bone-in chicken cooked in a fiery tomato-onion masala gravy.</p>
+                </div>
+
+                <div class="menu-item" data-category="curry">
+                    <div class="menu-item-header">
+                        <div class="veg-dot non-veg"></div>
+                        <h4>Chicken Dry Fry</h4>
+                        <span class="item-price">Market Price</span>
+                    </div>
+                    <p>Crispy, spicy dry-tossed chicken with curry leaves and whole red chillies.</p>
+                </div>
+
+                <div class="menu-item" data-category="curry">
+                    <div class="menu-item-header">
+                        <div class="veg-dot non-veg"></div>
+                        <h4>Egg Curry</h4>
+                        <span class="item-price">₹80</span>
+                    </div>
+                    <p>Boiled eggs simmered in a rich, tangy onion-tomato masala gravy.</p>
+                </div>
+
+                <div class="menu-item" data-category="curry">
+                    <div class="menu-item-header">
+                        <div class="veg-dot non-veg"></div>
+                        <h4>Seasonal Specials</h4>
+                        <span class="item-price">Ask Us</span>
+                    </div>
+                    <p>Our chef adds rotating specials daily. Call or WhatsApp to know today's Curry Point menu!</p>
+                </div>
+
+                <!-- Fastfood / Snacks -->
+                <div class="menu-item" data-category="snacks">
+                    <div class="menu-item-header">
+                        <div class="veg-dot non-veg"></div>
+                        <h4>Chicken 65</h4>
+                        <span class="item-price">₹140</span>
+                    </div>
+                    <p>Spicy deep-fried chicken starter marinated in yoghurt and fiery red chillies.</p>
+                </div>
+
+                <div class="menu-item" data-category="snacks">
+                    <div class="menu-item-header">
+                        <div class="veg-dot non-veg"></div>
+                        <h4>Egg Bhurji</h4>
+                        <span class="item-price">₹80</span>
+                    </div>
+                    <p>Scrambled eggs sautéed with onions, tomatoes and spices. With bread.</p>
+                </div>
+
+                <div class="menu-item" data-category="snacks">
+                    <div class="menu-item-header">
+                        <div class="veg-dot non-veg"></div>
+                        <h4>Omelette</h4>
+                        <span class="item-price">₹50</span>
+                    </div>
+                    <p>Masala omelette with onions, green chilli and coriander. Quick and satisfying!</p>
+                </div>
+
+                <!-- Drinks -->
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-header">
+                        <div class="veg-dot veg"></div>
+                        <h4>Filter Coffee</h4>
+                        <span class="item-price">₹25</span>
+                    </div>
+                    <p>Traditional South Indian filter coffee — strong decoction, hot milk, perfectly frothed.</p>
+                </div>
+
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-header">
+                        <div class="veg-dot veg"></div>
+                        <h4>Chai</h4>
+                        <span class="item-price">₹15</span>
+                    </div>
+                    <p>Hot spiced Indian tea. The perfect companion to any tiffin.</p>
+                </div>
+
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-header">
+                        <div class="veg-dot veg"></div>
+                        <h4>Buttermilk</h4>
+                        <span class="item-price">₹20</span>
+                    </div>
+                    <p>Chilled spiced buttermilk with cumin, ginger and curry leaves.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== GALLERY ===================== -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Our Space</span>
+                <h2 class="section-title">A Glimpse Inside</h2>
+                <p class="section-desc">Shree Ram Hotel — your neighbourhood hotel in Ameenpur</p>
+            </div>
+
+            <div class="gallery-grid">
+                <!-- FEATURED VIDEO ITEM -->
+                <div class="gallery-item large video-item">
+                    <div class="video-label-badge"><i class="fas fa-play-circle"></i> Daily Fresh Curries Video</div>
+                    <video class="gallery-video" poster="images/curry-point.jpg" autoplay muted loop playsinline controls>
+                        <source src="images/Curries.mp4" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
+                    <div class="gallery-overlay"><span>Curry Point in Action</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/hero-bg.jpg" alt="Shree Ram Hotel, Ameenpur"
+                         onerror="this.src='https://placehold.co/400x300/8B4513/FFF5E6?text=Shree+Ram+Hotel'">
+                    <div class="gallery-overlay"><span>Shree Ram Hotel</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/curry-point.jpg" alt="Curry Point Counter"
+                         onerror="this.src='https://placehold.co/400x300/6B3A2A/FFF5E6?text=Curry+Point'">
+                    <div class="gallery-overlay"><span>Curry Counter</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/placeholder-dish.jpg" alt="Chicken Biryani"
+                         onerror="this.src='https://placehold.co/400x300/5C2E1A/FFF5E6?text=Biryani'">
+                    <div class="gallery-overlay"><span>Special Biryani</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/placeholder-dish.jpg" alt="South Indian Meals"
+                         onerror="this.src='https://placehold.co/400x300/8B4513/FFF5E6?text=Thali+Meals'">
+                    <div class="gallery-overlay"><span>South Indian Meals</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== ABOUT US ===================== -->
+    <section class="about-section" id="about">
+        <div class="container about-grid">
+            <div class="about-text">
+                <span class="section-label">Our Story</span>
+                <h2 class="section-title">About Shree Ram Hotel</h2>
+                <p>
+                    Located in the heart of Ameenpur, Miyapur, Shree Ram Hotel has been
+                    a beloved neighbourhood hotel serving the community with honest, home-style
+                    South Indian food. What began as a humble tiffin corner grew into a
+                    full-service hotel complete with our famous <strong>Curry Point</strong> —
+                    a unique counter of freshly cooked curries and dry fries prepared daily.
+                </p>
+                <p>
+                    We serve A/C and Non-A/C dine-in, takeaway, home delivery,
+                    and we <strong>undertake all party orders and catering</strong>.
+                    Every dish is made with fresh, locally sourced ingredients
+                    and masalas ground in-house — no shortcuts, just great food.
+                </p>
+                <div class="about-highlights">
+                    <div class="highlight">
+                        <span class="highlight-num">A/C</span>
+                        <span class="highlight-label">& Non A/C Dining</span>
+                    </div>
+                    <div class="highlight">
+                        <span class="highlight-num">🍛</span>
+                        <span class="highlight-label">Curry Point</span>
+                    </div>
+                    <div class="highlight">
+                        <span class="highlight-num">🎉</span>
+                        <span class="highlight-label">Catering Available</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-hours">
+                <h3><i class="fas fa-clock"></i> Opening Hours</h3>
+                <table class="hours-table">
+                    <tr><td>Monday – Friday</td><td><strong>6:00 AM – 10:30 PM</strong></td></tr>
+                    <tr><td>Saturday</td><td><strong>6:00 AM – 11:00 PM</strong></td></tr>
+                    <tr><td>Sunday</td><td><strong>7:00 AM – 10:00 PM</strong></td></tr>
+                </table>
+                <div class="social-links">
+                    <h4>Follow & Connect</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon instagram" title="Instagram" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon facebook" title="Facebook" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://wa.me/919652750853" class="social-icon whatsapp" title="WhatsApp" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://maps.app.goo.gl/fpsS5iPzSHKhrYtn6" class="social-icon google" title="Google Maps" target="_blank">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CONTACT + GOOGLE MAPS ===================== -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Find Us</span>
+                <h2 class="section-title">Contact & Location</h2>
+                <p class="section-desc">We are always happy to hear from you</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h4>Address</h4>
+                            <p>G899+XRF, Ameenpur Rd, Ameenpur,<br>
+                            Miyapur, Ramachandrapuram (BHEL Township),<br>
+                            Telangana 502033</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div>
+                            <h4>Phone — Call or WhatsApp</h4>
+                            <p><a href="tel:+919652750853">+91 96527 50853</a></p>
+                            <p><a href="tel:+916300409184">+91 63004 09184</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon" style="background:#25D366"><i class="fab fa-whatsapp"></i></div>
+                        <div>
+                            <h4>WhatsApp — Orders &amp; Pre-booking</h4>
+                            <a href="https://wa.me/919652750853?text=Hello%20Shree%20Ram%20Hotel!%20I%20would%20like%20to%20enquire%20about%20a%20table%20booking%20/%20order."
+                               class="whatsapp-contact-btn" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Chat with us on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-utensils"></i></div>
+                        <div>
+                            <h4>Catering &amp; Party Orders</h4>
+                            <p>We undertake all party orders and catering services. Contact us in advance to discuss your requirements.</p>
+                            <a href="https://wa.me/919652750853?text=Hello!%20I%20am%20interested%20in%20catering%20/%20party%20orders%20from%20Shree%20Ram%20Hotel."
+                               class="whatsapp-contact-btn" style="margin-top: 0.5rem;" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Enquire for Catering
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Google Maps Embed using exact location -->
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3804.7398484545006!2d78.31963150000001!3d17.5199278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb8d0047f7bb65%3A0x518a54194a5ae4d4!2sShree%20ram%20Hotel!5e0!3m2!1sen!2sin!4v1795349694151!5m2!1sen!2sin"
+                        width="100%"
+                        height="380"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        title="Shree Ram Hotel Location — Ameenpur, Miyapur">
+                    </iframe>
+                    <a href="https://maps.app.goo.gl/fpsS5iPzSHKhrYtn6"
+                       class="directions-btn" target="_blank">
+                        <i class="fas fa-directions"></i> Get Directions on Google Maps
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <span class="logo-symbol">✿</span>
+                <span class="footer-name">Shree Ram Hotel &amp; Curry Point</span>
+                <p>Tiffins · Meals · Biryanis · Curry Point<br>Ameenpur, Miyapur, Hyderabad</p>
+                <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+                    <i class="fas fa-phone-alt"></i>
+                    <a href="tel:+919652750853" style="color: rgba(255,255,255,0.7);">96527 50853</a> &nbsp;|&nbsp;
+                    <a href="tel:+916300409184" style="color: rgba(255,255,255,0.7);">63004 09184</a>
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#special">Today's Special</a></li>
+                    <li><a href="#curry">Curry Point</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Connect With Us</h4>
+                <div class="social-icons">
+                    <a href="#" class="social-icon instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/919652750853" class="social-icon whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://maps.app.goo.gl/fpsS5iPzSHKhrYtn6" class="social-icon google" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: rgba(255,255,255,0.5);">\n                    <i class="fas fa-parking"></i> A/C &amp; Non A/C Dining<br>
+                    <i class="fas fa-birthday-cake"></i> Party Orders &amp; Catering
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Shree Ram Hotel &amp; Curry Point, Ameenpur. Made with ❤️ for our community.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>

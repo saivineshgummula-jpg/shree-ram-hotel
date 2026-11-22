@@ -1,17 +1,19 @@
 package org.ramya;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+// @SpringBootApplication does THREE things in one annotation:
+// 1. @Configuration       — this class can define Spring beans (components)
+// 2. @EnableAutoConfiguration — Spring Boot auto-configures everything it finds
+//    (e.g., sees spring-web on classpath → starts Tomcat server automatically)
+// 3. @ComponentScan       — scans this package for controllers, services, etc.
+@SpringBootApplication
+public class Main {
+
+    public static void main(String[] args) {
+        // This boots up the entire embedded Tomcat server and your app
+        // You will be able to open http://localhost:8080 in your browser!
+        SpringApplication.run(Main.class, args);
     }
 }

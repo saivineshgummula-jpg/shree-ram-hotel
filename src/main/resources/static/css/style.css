@@ -1,0 +1,1112 @@
+/*
+  ============================================================
+  SREE RAM HOTEL — style.css
+  ============================================================
+
+  HOW CSS WORKS (Quick primer for a Java dev):
+  - CSS = Cascading Style Sheets. It describes how HTML elements LOOK.
+  - "Cascading" means styles apply top-to-bottom. Later rules override earlier ones.
+  - Selector { property: value; } is the basic syntax.
+    e.g. h1 { color: red; }  — makes all h1 headings red.
+  - We use "classes" (.) and "IDs" (#) to target specific elements.
+    .btn { ... }  — targets anything with class="btn"
+    #navbar { ... } — targets the element with id="navbar"
+
+  DESIGN SYSTEM:
+  We define our colors and spacing as CSS Variables (like constants in Java).
+  Defined in :root (the top-level element), usable everywhere with var(--name).
+  ============================================================
+*/
+
+/* ===================== 1. CSS VARIABLES (Our Design Tokens) ===================== */
+:root {
+    /* COLOR PALETTE — Earthy & Homely */
+    --color-primary:    #8B4513;   /* SaddleBrown — main brand color */
+    --color-primary-dark: #6B3A2A; /* Darker brown for hover states */
+    --color-primary-light: #C4845A; /* Lighter brown for accents */
+    --color-gold:       #D4A853;   /* Warm gold for highlights */
+    --color-cream:      #FFF5E6;   /* Off-white cream background */
+    --color-beige:      #F5E6D3;   /* Section alternating background */
+    --color-dark:       #2C1A0E;   /* Near-black text */
+    --color-text:       #4A3728;   /* Body text — warm dark brown */
+    --color-text-light: #7A6355;   /* Muted text for descriptions */
+    --color-white:      #FFFFFF;
+
+    /* SPACING — consistent gaps throughout */
+    --space-xs:  0.5rem;    /* 8px  */
+    --space-sm:  1rem;      /* 16px */
+    --space-md:  1.5rem;    /* 24px */
+    --space-lg:  2.5rem;    /* 40px */
+    --space-xl:  5rem;      /* 80px */
+
+    /* TYPOGRAPHY */
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body:    'Lato', Arial, sans-serif;
+
+    /* LAYOUT */
+    --max-width: 1200px;
+    --border-radius: 12px;
+
+    /* SHADOWS */
+    --shadow-sm: 0 2px 8px rgba(139,69,19,0.1);
+    --shadow-md: 0 4px 20px rgba(139,69,19,0.15);
+    --shadow-lg: 0 8px 40px rgba(139,69,19,0.2);
+}
+
+
+/* ===================== 2. RESET & BASE STYLES ===================== */
+/*
+  Browsers have different default margins/paddings.
+  * { } targets EVERY element. box-sizing: border-box means
+  padding is included inside width calculations — so if you say
+  width: 300px, it stays 300px even with padding. Much easier to work with.
+*/
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    /* smooth-scroll: makes anchor links (#menu, #contact) scroll smoothly */
+    scroll-behavior: smooth;
+    font-size: 16px; /* 1rem = 16px. All our rem values are relative to this. */
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background-color: var(--color-cream);
+    line-height: 1.7; /* space between lines of text */
+    overflow-x: hidden; /* prevents horizontal scrollbar */
+}
+
+/* Links: remove default underline styling; we add our own */
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+/* Images: never overflow their container; maintain aspect ratio */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul {
+    list-style: none; /* remove bullet points */
+}
+
+/* ===================== 3. UTILITY CLASSES ===================== */
+/*
+  A "container" class centers content and sets a max-width.
+  This is the most common layout pattern in web design.
+  margin: 0 auto = "0 top/bottom, auto left/right" = centered horizontally.
+*/
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+/* Section header: shared style for all section titles */
+.section-header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+}
+
+.section-label {
+    display: inline-block;
+    color: var(--color-primary-light);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: var(--space-xs);
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 4vw, 2.8rem); /* clamp(min, preferred, max) — fluid font */
+    color: var(--color-dark);
+    margin-bottom: var(--space-xs);
+    position: relative;
+    display: inline-block;
+}
+
+/* Decorative underline below section titles */
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--color-gold);
+    margin: var(--space-xs) auto 0;
+    border-radius: 2px;
+}
+
+.section-desc {
+    color: var(--color-text-light);
+    max-width: 600px;
+    margin: var(--space-sm) auto 0;
+}
+
+/* ===================== 4. BUTTONS ===================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 2rem;
+    border-radius: 50px; /* pill shape */
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background-color: #25D366; /* WhatsApp official green */
+    color: var(--color-white);
+    border-color: #25D366;
+}
+
+.btn-primary:hover {
+    background-color: #1DA851;
+    transform: translateY(-2px); /* lifts up on hover */
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-white);
+    border-color: var(--color-white);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+}
+
+.btn-order {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: #25D366;
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn-order:hover {
+    background-color: #1DA851;
+    transform: translateY(-2px);
+}
+
+/* ===================== 5. VEG/NON-VEG INDICATORS ===================== */
+/*
+  Indian food standard: green square + green circle = Veg
+                        red square + red circle = Non-veg
+*/
+.veg-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1.5px solid;
+    margin-bottom: var(--space-xs);
+}
+
+.veg-indicator .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.veg-indicator.veg { border-color: #2E7D32; color: #2E7D32; }
+.veg-indicator.veg .dot { background-color: #2E7D32; }
+
+.veg-indicator.non-veg { border-color: #C62828; color: #C62828; }
+.veg-indicator.non-veg .dot { background-color: #C62828; }
+
+/* Small dots used in menu grid cards */
+.veg-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.veg-dot::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px; height: 6px;
+    border-radius: 50%;
+}
+
+.veg-dot.veg { border-color: #2E7D32; }
+.veg-dot.veg::after { background-color: #2E7D32; }
+
+.veg-dot.non-veg { border-color: #C62828; }
+.veg-dot.non-veg::after { background-color: #C62828; }
+
+
+/* ===================== 6. NAVBAR ===================== */
+.navbar {
+    position: fixed; /* stays at top even when you scroll */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* always on top of everything else */
+    padding: 1.2rem 0;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+/* .scrolled class is added by JavaScript when page is scrolled down */
+.navbar.scrolled {
+    background: rgba(44, 26, 14, 0.97);
+    padding: 0.8rem 0;
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(10px);
+}
+
+.nav-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-symbol {
+    font-size: 2rem;
+    color: var(--color-gold);
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-main {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--color-white);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.logo-tagline {
+    font-size: 0.65rem;
+    color: var(--color-gold);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--space-md);
+    align-items: center;
+}
+
+.nav-links a {
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.4rem 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Animated underline on nav links */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-gold);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover { color: var(--color-gold); }
+.nav-links a:hover::after { width: 100%; }
+
+/* Hamburger menu (mobile) — hidden on desktop */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 25px; height: 2.5px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+
+/* ===================== 7. HERO SECTION ===================== */
+.hero {
+    min-height: 100vh; /* full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    /*
+      background-image: url() sets an image as background.
+      We add a gradient on top (the .hero-overlay div) to darken it
+      so white text is readable.
+      
+      REPLACE 'images/hero-bg.jpg' with a real restaurant photo!
+      Put that photo in src/main/resources/static/images/
+    */
+    background-image: url('../images/hero-bg.jpg');
+    background-size: cover;      /* fills entire area, may crop */
+    background-position: center; /* center the image */
+    background-attachment: fixed; /* parallax scrolling effect */
+    /* Fallback if no image: a rich brown gradient */
+    background-color: var(--color-primary-dark);
+}
+
+.hero-overlay {
+    /* A dark brown gradient layered on top of the background image */
+    position: absolute;
+    inset: 0; /* shorthand for top:0 right:0 bottom:0 left:0 */
+    background: linear-gradient(
+        135deg,
+        rgba(44, 26, 14, 0.85) 0%,
+        rgba(107, 58, 42, 0.75) 100%
+    );
+}
+
+.hero-content {
+    position: relative; /* sits above the overlay */
+    z-index: 1;
+    max-width: 800px;
+    padding: 0 var(--space-md);
+}
+
+.hero-welcome {
+    color: var(--color-gold);
+    font-size: 1rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: var(--space-xs);
+    font-weight: 300;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    color: var(--color-white);
+    line-height: 1.1;
+    margin-bottom: var(--space-xs);
+}
+
+.hero-subtitle {
+    font-family: var(--font-heading);
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--color-gold);
+    font-style: italic;
+    margin-bottom: var(--space-sm);
+}
+
+.hero-description {
+    color: rgba(255,255,255,0.8);
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0 auto var(--space-md);
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Animated scroll-down arrow at bottom of hero */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.6);
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(10px); }
+}
+
+
+/* ===================== 8. TODAY'S SPECIAL ===================== */
+.special-section {
+    padding: var(--space-xl) 0;
+    background-color: var(--color-beige);
+}
+
+.specials-grid {
+    display: grid;
+    /* auto-fit + minmax: creates as many columns as fit, each at least 300px wide */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-md);
+}
+
+.special-card {
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.special-card:hover {
+    transform: translateY(-6px); /* lift card on hover */
+    box-shadow: var(--shadow-lg);
+}
+
+/* Featured card has a golden border */
+.special-card.featured {
+    border: 2px solid var(--color-gold);
+}
+
+.special-badge {
+    position: absolute;
+    top: var(--space-sm);
+    right: var(--space-sm);
+    background: var(--color-gold);
+    color: var(--color-dark);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    z-index: 1;
+}
+
+.special-img-wrap {
+    height: 220px;
+    overflow: hidden;
+}
+
+.special-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* fills box, crops if needed */
+    transition: transform 0.4s ease;
+}
+
+.special-card:hover .special-img {
+    transform: scale(1.05); /* zoom image on card hover */
+}
+
+.special-info {
+    padding: var(--space-sm) var(--space-md);
+}
+
+.special-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--color-dark);
+    margin-bottom: var(--space-xs);
+}
+
+.special-info p {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-sm);
+}
+
+.special-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--color-beige);
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+}
+
+
+/* ===================== 9. MENU SECTION ===================== */
+.menu-section {
+    padding: var(--space-xl) 0;
+    background: var(--color-cream);
+}
+
+/* Category filter tabs */
+.menu-tabs {
+    display: flex;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: var(--space-lg);
+}
+
+.tab-btn {
+    padding: 0.6rem 1.5rem;
+    border: 2px solid var(--color-primary);
+    border-radius: 30px;
+    background: transparent;
+    color: var(--color-primary);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+/* Menu items grid */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-sm);
+}
+
+.menu-item {
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    padding: var(--space-sm) var(--space-md);
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--color-beige);
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+    border-left-color: var(--color-primary);
+    transform: translateX(4px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Hidden class used by JavaScript for category filtering */
+.menu-item.hidden {
+    display: none;
+}
+
+.menu-item-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+}
+
+.menu-item-header h4 {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    color: var(--color-dark);
+    flex: 1;
+}
+
+.item-price {
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+.menu-item p {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    line-height: 1.5;
+}
+
+
+/* ===================== 10. GALLERY ===================== */
+.gallery-section {
+    padding: var(--space-xl) 0;
+    background: var(--color-beige);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 220px);
+    gap: 1rem;
+}
+
+/* The first (large) gallery item spans 2 columns and 2 rows */
+.gallery-item.large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.gallery-item {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+/* Overlay text that appears on gallery image hover */
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(44,26,14,0.8), transparent);
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-sm);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-overlay span {
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: var(--font-heading);
+}
+
+
+/* ===================== 11. ABOUT SECTION ===================== */
+.about-section {
+    padding: var(--space-xl) 0;
+    background: var(--color-cream);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+}
+
+.about-text p {
+    color: var(--color-text-light);
+    margin-bottom: var(--space-sm);
+}
+
+.about-text strong {
+    color: var(--color-primary);
+}
+
+.about-highlights {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-beige);
+}
+
+.highlight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.highlight-num {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.highlight-label {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    text-align: center;
+}
+
+.about-hours {
+    background: var(--color-dark);
+    color: var(--color-white);
+    border-radius: var(--border-radius);
+    padding: var(--space-lg);
+}
+
+.about-hours h3 {
+    font-family: var(--font-heading);
+    color: var(--color-gold);
+    font-size: 1.3rem;
+    margin-bottom: var(--space-md);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.hours-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--space-md);
+}
+
+.hours-table td {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.9rem;
+}
+
+.hours-table td:first-child {
+    color: rgba(255,255,255,0.7);
+}
+
+.hours-table td:last-child {
+    text-align: right;
+    color: var(--color-gold);
+}
+
+/* Social Media Icons */
+.social-links h4 {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.social-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-4px) scale(1.1);
+}
+
+.social-icon.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.social-icon.facebook  { background: #1877F2; }
+.social-icon.whatsapp  { background: #25D366; }
+.social-icon.google    { background: #EA4335; }
+
+
+/* ===================== 12. CONTACT SECTION ===================== */
+.contact-section {
+    padding: var(--space-xl) 0;
+    background: var(--color-beige);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--space-lg);
+    align-items: start;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.contact-item {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: flex-start;
+    background: var(--color-white);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.contact-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1rem;
+}
+
+.contact-item h4 {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.contact-item p,
+.contact-item a {
+    color: var(--color-text);
+    font-size: 0.95rem;
+}
+
+.contact-item a:hover {
+    color: var(--color-primary);
+}
+
+.whatsapp-contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #25D366;
+    color: white;
+    padding: 0.6rem 1.4rem;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-top: 4px;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-contact-btn:hover {
+    background: #1DA851;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.map-container {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    position: relative;
+}
+
+.map-container iframe {
+    display: block;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.directions-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: var(--color-primary);
+    color: white;
+    padding: 1rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    transition: background 0.3s ease;
+}
+
+.directions-btn:hover {
+    background: var(--color-primary-dark);
+    color: white;
+}
+
+
+/* ===================== 13. FOOTER ===================== */
+.footer {
+    background: var(--color-dark);
+    color: rgba(255,255,255,0.7);
+    padding: var(--space-xl) 0 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--space-xl);
+    padding-bottom: var(--space-lg);
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-brand .logo-symbol {
+    font-size: 2.5rem;
+    color: var(--color-gold);
+}
+
+.footer-name {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--color-white);
+}
+
+.footer-brand p {
+    font-size: 0.9rem;
+    max-width: 280px;
+}
+
+.footer-links h4,
+.footer-social h4 {
+    color: var(--color-gold);
+    margin-bottom: var(--space-sm);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.footer-links ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.footer-links a:hover {
+    color: var(--color-gold);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: var(--space-sm) 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.85rem;
+}
+
+
+/* ===================== 14. RESPONSIVE DESIGN (Mobile) ===================== */
+/*
+  @media is a CSS "media query" — it applies styles only when the
+  screen size matches the condition.
+  max-width: 768px means: "phones and small tablets (screen ≤ 768px wide)"
+  
+  This is called "Mobile-First" or "Responsive" design.
+*/
+@media (max-width: 768px) {
+
+    /* Show hamburger button on mobile */
+    .nav-toggle {
+        display: flex;
+    }
+
+    /* Stack nav links vertically, hidden by default on mobile */
+    .nav-links {
+        position: fixed;
+        top: 0; right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: var(--color-dark);
+        flex-direction: column;
+        justify-content: center;
+        gap: var(--space-md);
+        transition: right 0.3s ease;
+        padding: var(--space-xl) var(--space-lg);
+    }
+
+    /* When .open class is added by JS: slide menu in */
+    .nav-links.open {
+        right: 0;
+    }
+
+    .nav-links a { font-size: 1.2rem; }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Gallery: 2 columns on mobile */
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+
+    .gallery-item.large {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    /* Stack about section */
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Stack contact section */
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Stack footer */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+
+    .about-highlights {
+        gap: var(--space-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-item.large {
+        grid-column: span 1;
+    }
+
+    .menu-tabs {
+        gap: 0.4rem;
+    }
+
+    .tab-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+}

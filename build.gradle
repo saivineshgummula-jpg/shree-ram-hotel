@@ -1,18 +1,28 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot' version '3.4.0'
+    id 'io.spring.dependency-management' version '1.1.6'
 }
 
 group = 'org.ramya'
 version = '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    // Spring Boot Web: gives us the embedded Tomcat server
+    // and automatic serving of static files from src/main/resources/static/
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Spring Boot test support
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 test {

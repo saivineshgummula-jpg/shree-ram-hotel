@@ -1,0 +1,184 @@
+/*
+  curry-extras.css
+  Additional styles for: Curry Point section, Hero services strip,
+  Video players, and responsive overrides.
+*/
+
+/* ===================== CURRY POINT SECTION =====================
+  This section uses a dark background (deep brown from our palette)
+  to create visual contrast — making it stand out as a "hero within the page".
+  The image/video sits on the left, content on the right (a classic "split" layout).
+*/
+.curry-section {
+    padding: var(--space-xl) 0;
+    background: var(--color-dark);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle radial glow decoration in background */
+.curry-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(139,69,19,0.3), transparent 60%);
+    pointer-events: none;
+}
+
+.curry-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.curry-image-wrap {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    background: #1a0f08;
+}
+
+.curry-image-wrap img,
+.curry-image-wrap video {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.curry-badge {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    background: var(--color-primary);
+    color: white;
+    padding: 0.6rem 1.4rem;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: var(--shadow-md);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.curry-content .section-title {
+    text-align: left;
+}
+
+.curry-content .section-title::after {
+    margin: var(--space-xs) 0 0;
+}
+
+.curry-desc {
+    color: rgba(255,255,255,0.75);
+    margin-bottom: var(--space-sm);
+    line-height: 1.8;
+}
+
+.curry-desc strong {
+    color: var(--color-gold);
+}
+
+.curry-highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+}
+
+.curry-highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: rgba(255,255,255,0.8);
+    font-size: 0.9rem;
+}
+
+.curry-highlight-item i {
+    color: var(--color-gold);
+    font-size: 1.1rem;
+    width: 20px;
+    flex-shrink: 0;
+}
+
+/* ===================== VIDEO PLAYER IN GALLERY ===================== */
+.gallery-item.video-item {
+    background: #111;
+}
+
+.gallery-item.video-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.video-label-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(44, 26, 14, 0.85);
+    color: var(--color-gold);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 2;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(212, 168, 83, 0.3);
+}
+
+/* ===================== HERO SERVICES STRIP ===================== */
+.hero-services {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--space-md);
+    padding-top: var(--space-sm);
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.hero-services span {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.hero-services i {
+    color: var(--color-gold);
+    font-size: 0.75rem;
+}
+
+/* ===================== RESPONSIVE: Curry section on mobile ===================== */
+@media (max-width: 768px) {
+    .curry-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .curry-image-wrap img,
+    .curry-image-wrap video {
+        height: 320px;
+    }
+
+    .curry-highlights {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-services {
+        gap: var(--space-sm);
+    }
+}
